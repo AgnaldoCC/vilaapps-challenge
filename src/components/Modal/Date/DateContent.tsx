@@ -22,11 +22,6 @@ const CustomInput = styled.input`
   outline: none;
   text-align: center;
 
-  &::-webkit-inner-spin-button,
-  &::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
 `;
 
 export default DateContent;
