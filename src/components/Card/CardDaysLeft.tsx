@@ -8,10 +8,10 @@ type CardDaysLeftProps = {
 
 const CardDaysLeft = (props: CardDaysLeftProps) => {
   return (
-    <Column>
+    <CenterColumn>
       <Days diff={props.diff}>{Math.abs(props.diff)}</Days>
       <DaysLabel>{`days ${props.diff < 0 ? 'ago' : 'left'}`}</DaysLabel>
-    </Column>
+    </CenterColumn>
   )
 };
 
@@ -25,6 +25,10 @@ const Days = styled.label<CardDaysLeftProps>`
 const DaysLabel = styled.label`
   font-weight: 400;
   font-size: 15px;
+`;
+
+const CenterColumn = styled(Column)`
+  align-items: center;
 `;
 
 export default CardDaysLeft;

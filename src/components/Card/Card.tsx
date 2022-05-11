@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { getDate, getDateDiffence } from '../../utils/date';
+import { useCountdown } from '../../hooks/useCountdownList';
+import { FormData } from '../../hooks/useFormData';
+import { getDate, getDateDifference } from '../../utils/date';
 import Column from '../General/Column';
 import Row from '../General/Row';
 import CardDate from './CardDate';
@@ -10,10 +12,9 @@ import CardOverflow from './CardOverflow';
 import CardTitle from './CardTitle';
 
 type CardProps = {
-  title: string;
-  description: string;
-  time: string;
-  image?: string;
+  card: FormData;
+  id: number;
+  setModalOpen: (value: boolean) => void;
 };
 
 type CardContainerProps = {
@@ -21,19 +22,24 @@ type CardContainerProps = {
 };
 
 const Card = (props: CardProps) => {
-  const daysDiff = getDateDiffence(props.time);
+  const daysDiff = getDateDifference(props.card.date);
   const [isOpen, setIsOpen] = useState(false);
+  const removeCountdown = useCountdown(state => state.removeCountdown);
+  const selfRemove = () => {
+    removeCountdown(props.id);
+  }
+
   return (
     <CardContainer onClick={() => setIsOpen(!isOpen)} diff={daysDiff}>
       <Row>
-        <CardIcon imgSrc={props.image} />
+        <CardIcon imgSrc={props.card.icon} />
         <Column gap={15} margin={"0px auto 0px 30px"}>
-          <CardTitle>{props.title.toLowerCase()}</CardTitle>
-          <CardDate>{getDate(props.time)}</CardDate>
+          <CardTitle>{props.card.title.toLowerCase()}</CardTitle>
+          <CardDate>{getDate(props.card.date)}</CardDate>
         </Column>
         <CardDaysLeft diff={daysDiff} />
       </Row>
-      <CardOverflow description={props.description} isOpen={isOpen} />
+      <CardOverflow card={props.card} isOpen={isOpen} remove={selfRemove} setModalOpen={props.setModalOpen} />
     </CardContainer>
 
   )
@@ -69,7 +75,6 @@ const CardContainer = styled.div<CardContainerProps>`
 
 const DisabledCard = `
   opacity: 0.5;
-  cursor: not-allowed;
 `;
 
 export default Card;

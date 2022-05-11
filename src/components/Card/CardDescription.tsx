@@ -6,6 +6,7 @@ type CardDescriptionProps = {
 };
 
 const CardDescription = (props: CardDescriptionProps) => {
+  if(!props.children) return null;
   return <Description>{props.children}</Description>
 };
 

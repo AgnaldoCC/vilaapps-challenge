@@ -1,17 +1,34 @@
 import styled from "@emotion/styled";
+import { useFormData } from "../../hooks/useFormData";
 import AddCountdownButton from "../AddCountdownButton";
 import Modal from "../Modal/Modal";
+import ModalContent from "../Modal/ModalContent";
 import HeaderSubtitle from "./HeaderSubtitle";
 
-const Header = () => {
+export type HeaderProps = {
+  setModalOpen: (value: boolean) => void;
+  modalOpen: boolean;
+}
+
+const Header = (props: HeaderProps) => {
+
+  const resetFormData = useFormData(state => state.resetFormData);
+
+  const handleModalClose = (event: any) => {
+    resetFormData();
+    props.setModalOpen(false);
+  }
+
   return (
     <>
     <HeaderContainer>
       <HeaderText>countdown</HeaderText>
     </HeaderContainer>
     <HeaderSubtitle />
-    <AddCountdownButton onClick={() => alert('clicked')} />
-    <Modal isOpen={false} onClose={() => alert('closed')}>Testando</Modal>
+    <AddCountdownButton onClick={() => props.setModalOpen(true)} />
+    <Modal isOpen={props.modalOpen} onClose={handleModalClose}>
+      <ModalContent closeModal={() => props.setModalOpen(false)} />
+    </Modal>
     </>
   )
 };

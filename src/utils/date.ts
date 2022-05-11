@@ -6,7 +6,7 @@ export const getDate = (someDate: string) => {
   return `${month} ${day}, ${year}`;
 };
 
-export const getDateDiffence = (someDate: string) => {
+export const getDateDifference = (someDate: string) => {
   const date = new Date(someDate);
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
   const today = new Date();
