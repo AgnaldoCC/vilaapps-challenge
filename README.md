@@ -11,7 +11,7 @@
 #### NextJS
 #### Styled-components (emotion)
 #### Typescript
-#### Zustand (gerenciamento de estados)
+#### Zustand (gerenciamento de estados) juntamente com o local storage para uma persistência dos dados após o reload
 
 <br />
 
