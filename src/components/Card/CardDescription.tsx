@@ -14,6 +14,7 @@ const Description = styled.label`
   font-weight: 300;
   font-size: 20px;
   margin: 20px 0 10px 0;
+  word-break: break-all;
 `;
 
 export default CardDescription;
