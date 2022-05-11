@@ -13,6 +13,8 @@ const DaysContent = (props: DateProps) => {
 const DaysInput = styled(Input)`
   max-width: 70px !important;
   height: 42px;
+  font-size: 24px;
+  font-weight: 600;
 
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
