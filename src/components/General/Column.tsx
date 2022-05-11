@@ -5,11 +5,12 @@ type ColumnProps = {
   gap?: number;
   margin?: string;
   children: ReactNode;
+  className?: string;
 };
 
 const Column = (props: ColumnProps) => {
   return (
-    <ColumnComponent gap={props.gap} margin={props.margin}>
+    <ColumnComponent gap={props.gap} margin={props.margin} className={props.className}>
       {props.children}
     </ColumnComponent>
   )

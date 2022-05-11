@@ -11,10 +11,8 @@ export type HeaderProps = {
 }
 
 const Header = (props: HeaderProps) => {
-
   const resetFormData = useFormData(state => state.resetFormData);
-
-  const handleModalClose = (event: any) => {
+  const handleModalClose = () => {
     resetFormData();
     props.setModalOpen(false);
   }

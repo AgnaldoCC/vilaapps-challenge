@@ -13,12 +13,16 @@ type ButtonProps = {
 const ModalIcon = (props: ModalIconProps) => {
   const setFormData = useFormData(state => state.setFormData);
   const formData = useFormData(state => state.formData);
+  const isSelected = formData.icon === props.imgSrc;
 
   const handleClick = (event: any) => {
-    setFormData({...formData, icon: event.target.id});
+    if(isSelected) {
+      setFormData({...formData, icon: ''});
+    } else {
+      setFormData({...formData, icon: event.target.id});
+    }
   }
 
-  const isSelected = formData.icon === props.imgSrc;
 
   return (
     <ModalImgContainer onClick={handleClick} id={props.imgSrc} isSelected={isSelected}>

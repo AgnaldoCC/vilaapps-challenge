@@ -8,7 +8,7 @@ const TitleInput = () => {
     setFormData({...formData, title: event.target.value});
   }
   return (
-    <Input label='Event Name:' name='title' maxLength={20} onChange={handleChange} defaultValue={formData.title} />
+    <Input label='Event Name:' name='title' maxLength={20} onChange={handleChange} value={formData.title} />
   )
 };
 

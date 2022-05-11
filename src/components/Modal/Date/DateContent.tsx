@@ -1,16 +1,15 @@
 import styled from '@emotion/styled';
-import InputMask from 'react-input-mask';
 import { useFormData } from '../../../hooks/useFormData';
 import { DateProps } from './DateSelectionContent';
 
 const DateContent = (props: DateProps) => {
   const formData = useFormData((state) => state.formData);
   return (
-    <CustomInput mask='99/99/9999' placeholder='mm/dd/yyyy' name='dateContent' onChange={props.onChange} value={formData.date} />
+    <CustomInput type={"date"} value={formData.date} onChange={props.onChange} />
   )
 };
 
-const CustomInput = styled(InputMask)`
+const CustomInput = styled.input`
   width: auto;
   padding: 5px 0;
   border-radius: 42px;
@@ -22,6 +21,12 @@ const CustomInput = styled(InputMask)`
   font-weight: 600;
   outline: none;
   text-align: center;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
 `;
 
 export default DateContent;

@@ -14,16 +14,15 @@ const DateSelectionContent = (props: DateSelectionContentProps) => {
   const formData = useFormData((state) => state.formData);
   const setFormData = useFormData((state) => state.setFormData);
   const handleChange = (event: any) => {
-    if(props.id === 'days') {
-      const now = new Date();
+    const now = new Date();
+    if (props.id === 'days') {
       now.setDate(now.getDate() + +event.target.value);
-      const [year, month, day] = now.toISOString().split('T')[0].split('-');
-      setFormData({...formData, date: `${month}/${day}/${year}` });  
+      const date = now.toISOString().split('T')[0];
+      setFormData({...formData, date: date });  
     } else {
-      setFormData({...formData, date: event.target.value});
+      setFormData({ ...formData, date: event.target.value });
     }
   }
-
   if (props.id === 'date') return <DateContent onChange={handleChange} />;
   return <DaysContent onChange={handleChange} />;
 };

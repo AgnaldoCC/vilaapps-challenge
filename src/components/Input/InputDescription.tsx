@@ -9,7 +9,7 @@ const InputDescription = () => {
     setFormData({...formData, description: event.target.value});
   }
   return (
-    <TextArea label={"Description:"} maxLength={280} name='description' onChange={handleChange} defaultValue={formData.description} />
+    <TextArea label={"Description:"} maxLength={280} name='description' onChange={handleChange} value={formData.description} />
   )
 };
 

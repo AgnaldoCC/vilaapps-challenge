@@ -7,7 +7,7 @@ import { getDateDifference } from '../../../utils/date';
 
 const DaysContent = (props: DateProps) => {
   const formData = useFormData((state) => state.formData);
-  return <DaysInput name='dateContent' type={"number"} placeholder={'dddd'} onChange={props.onChange} defaultValue={getDateDifference(formData.date)} />;
+  return <DaysInput name='dateContent' type={"number"} min={1} max={9999} maxLength={4} placeholder={'dddd'} onChange={props.onChange} defaultValue={getDateDifference(formData.date)} />;
 };
 
 const DaysInput = styled(Input)`

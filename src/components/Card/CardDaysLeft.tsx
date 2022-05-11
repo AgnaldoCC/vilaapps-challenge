@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { getDateDiffence } from "../../utils/date";
 import Column from "../General/Column";
 
 type CardDaysLeftProps = {
